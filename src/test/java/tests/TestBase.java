@@ -15,7 +15,7 @@ public class TestBase {
     public void openBrowser(){
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.navigate().to("https://www.saucedemo.com/");
+        driver.get("https://www.saucedemo.com/");
 
     }
 

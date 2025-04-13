@@ -14,6 +14,24 @@ public class CheckoutPage extends PageBase{
     By postalCode = By.id("postal-code");
     By continueButton = By.id("continue");
     By cancelButton = By.id("cancel");
+    By firstNameErrorMessage = By.xpath("//h3[contains(text(),'First Name is required')]");
+    By lastNameErrorMessage = By.xpath("//h3[contains(text(),'Last Name is required')]");
+    By postalCodeErrorMessage = By.xpath("//h3[contains(text(),'Postal Code is required')]");
+    By cartButton = By.id("shopping_cart_container");
+
+    public String getFirstNameErrorMessage() {
+        return getElementText(firstNameErrorMessage);
+    }
+
+    public String getLastNameErrorMessage() {
+        return getElementText(lastNameErrorMessage);
+    }
+
+    public String getPostalCodeErrorMessage() {
+        return getElementText(postalCodeErrorMessage);
+    }
+
+
 
     public void fillFirstName(String firstName) {
         fillElement(this.firstName, firstName);
@@ -44,5 +62,19 @@ public class CheckoutPage extends PageBase{
     public String getCheckoutActualResult() {
         return getElementText(checkoutText);
     }
+
+    public CheckoutOverviewPage goToCheckoutOverview() {
+        clickOnElement(continueButton);
+        return new CheckoutOverviewPage(driver);
+    }
+
+//    public CartPage goToCartPageFromCheckout() {
+//        clickOnElement(cancelButton);
+//        return new CartPage(driver);
+//    }
+
+
+
+
 }
 
