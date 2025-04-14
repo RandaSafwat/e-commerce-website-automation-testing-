@@ -41,8 +41,8 @@ public class ProductsPage extends PageBase {
         clickOnElement(cartIcon);
     }
     public boolean areCartItemsVisible() {
-        waitForElementVisibility(cartItems); // انتظر حتى تظهر العناصر في العربة
-        return driver.findElements(cartItems).size() > 0; // تحقق من وجود عناصر
+        waitForElementVisibility(cartItems);
+        return driver.findElements(cartItems).size() > 0;
     }
 
     By productsText = By.xpath("//span[@class=\"title\"]");
@@ -56,16 +56,15 @@ public class ProductsPage extends PageBase {
         return getElementText(productsText);
     }
 
-//    public void clickOnRemoveFromCartButton(int index) {
-//        List<WebElement> removeButtons = driver.findElements(By.xpath("//*[@class='btn btn_secondary btn_small cart_button']"));
-//
-//        // تحقق إذا كان الـ index ضمن حجم القائمة
-//        if (index >= 0 && index < removeButtons.size()) {
-//            removeButtons.get(index).click();
-//        } else {
-//            System.out.println("Index out of bounds: " + index);
-//        }
-//    }
+    public void clickOnRemoveFromCartButton(int index) {
+        List<WebElement> removeButtons = driver.findElements(By.xpath("//*[@class='btn btn_secondary btn_small cart_button']"));
+
+        if (index >= 0 && index < removeButtons.size()) {
+            removeButtons.get(index).click();
+        } else {
+            System.out.println("Index out of bounds: " + index);
+        }
+    }
 
 
 

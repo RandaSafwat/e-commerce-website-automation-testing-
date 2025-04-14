@@ -16,7 +16,7 @@ public class CartPage extends PageBase {
 
 
     public String getCartTitleText() {
-        return getElementText(YourCart);  // جلب النص من العنصر
+        return getElementText(YourCart);
     }
 
     // Methods
@@ -29,15 +29,15 @@ public class CartPage extends PageBase {
 
 
     public void clickOnCartIcon() {
-        clickOnElement(cartIcon); // بيستخدم الانتظار الجاهز من PageBase
+        clickOnElement(cartIcon);
     }
 
     public void clickOnCheckoutButton() {
-        clickOnElement(checkoutButton);// نفس الكلام
+        clickOnElement(checkoutButton);
     }
 
     public void waitForCheckoutButtonToBeVisible() {
-        waitForElementToBeVisible(checkoutButton); // دي موجودة في PageBase
+        waitForElementToBeVisible(checkoutButton);
     }
 
 
@@ -46,8 +46,8 @@ public class CartPage extends PageBase {
         clickOnCheckoutButton();
     }
     public CartPage goToCartPageFromCheckout() {
-        clickOnCartIcon();  // الضغط على أيقونة العربة
-        return new CartPage(driver);  // العودة إلى صفحة العربة
+        clickOnCartIcon();
+        return new CartPage(driver);
     }
 
 }

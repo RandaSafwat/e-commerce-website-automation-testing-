@@ -35,16 +35,13 @@ public class CheckoutTest extends TestBase {
         loginHelp.loginWithValidUserNameAndPassword();
         Thread.sleep(5000);
         // Step 2: Add two products to cart
-        product.clickOnAddToCartButton(0); // أول منتج
+        product.clickOnAddToCartButton(0);
         Thread.sleep(5000);
-        product.clickOnAddToCartButton(1); // ثاني منتج
+        product.clickOnAddToCartButton(1);
         Thread.sleep(5000);
         // Step 3: Go to cart
         product.goToCartPage();
         Thread.sleep(5000);
-        // Step 4: Remove one product (وليكن الأول)
-//        product.clickOnRemoveFromCartButton(0);
-//        Thread.sleep(5000);
         // Step 5: Click on checkout
         cartPage.waitForCheckoutButtonToBeVisible();
         cartPage.clickOnCheckoutButton();
@@ -73,16 +70,13 @@ public class CheckoutTest extends TestBase {
         loginHelp.loginWithValidUserNameAndPassword();
         Thread.sleep(5000);
         // Step 2: Add two products to cart
-        product.clickOnAddToCartButton(0); // أول منتج
+        product.clickOnAddToCartButton(0);
         Thread.sleep(5000);
-        product.clickOnAddToCartButton(1); // ثاني منتج
+        product.clickOnAddToCartButton(1);
         Thread.sleep(5000);
         // Step 3: Go to cart
         product.goToCartPage();
         Thread.sleep(5000);
-        // Step 4: Remove one product (وليكن الأول)
-//        product.clickOnRemoveFromCartButton(0);
-//        Thread.sleep(5000);
         // Step 5: Click on checkout
         cartPage.waitForCheckoutButtonToBeVisible();
         cartPage.clickOnCheckoutButton();

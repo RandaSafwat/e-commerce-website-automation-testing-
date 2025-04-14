@@ -43,8 +43,8 @@ public class ProductsTests extends TestBase {
     }
     @Test
     public void testNavigateToCartPageAfterAddingProduct() {
-        productsPage.clickOnAddToCartButton(0); // Add the first product to the cart
-        productsPage.goToCartPage(); // Navigate to the cart page
+        productsPage.clickOnAddToCartButton(0);
+        productsPage.goToCartPage();
 
         Assert.assertTrue(cartPage.areCartItemsVisible(), "No items found in the cart.");
     }
