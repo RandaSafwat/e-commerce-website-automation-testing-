@@ -13,6 +13,7 @@ public class CheckoutOverviewPage extends PageBase {
     }
 
 
+
     public String getCheckoutOverviewText() {
         return getElementText(checkoutOverviewText);
     }

@@ -14,34 +14,39 @@ public class PageBase {
     public PageBase(WebDriver driver){
         this.driver =driver;
     }
-    public void waitForElementToBePresent( By element){
+    public void waitForElementToBePresent( By locator){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(WAIT));
-        wait.until(ExpectedConditions.presenceOfElementLocated(element));
+        wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
-    public void waitForElementToBeClickable( By element){
+    public void waitForElementToBeClickable( By locator){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(WAIT));
-        wait.until(ExpectedConditions.elementToBeClickable(element));
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
-    public void waitForElementToBeVisible( By element) {
+    public void waitForElementToBeVisible( By locator) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(WAIT));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    public void clickOnElement(By element){
-        waitForElementToBeVisible(element);
-        waitForElementToBeClickable(element);
-        driver.findElement(element).click();
+    public void clickOnElement(By locator){
+        waitForElementToBeVisible(locator);
+        waitForElementToBeClickable(locator);
+        driver.findElement(locator).click();
     }
 
-    public void fillElement(By element,String value){
-        driver.findElement(element).sendKeys(value);
+    public void fillElement(By locator,String value){
+        driver.findElement(locator).sendKeys(value);
     }
 
-    public String getElementText(By element){
-        waitForElementToBeVisible(element);
-       return driver.findElement(element).getText();
+    public String getElementText(By locator){
+        waitForElementToBeVisible(locator);
+       return driver.findElement(locator).getText();
+    }
+
+    public void waitForElementVisibility(By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(WAIT));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
 

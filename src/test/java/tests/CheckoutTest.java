@@ -1,51 +1,57 @@
 package tests;
 
+import Helper.LoginHelp;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.CheckoutPage;
-import pages.CheckoutOverviewPage;
+import pages.*;
 
 public class CheckoutTest extends TestBase {
+    LoginHelp loginHelp ;
     CheckoutPage checkout;
     CheckoutOverviewPage checkoutOverviewPage;
+    ProductsPage product;
+    CartPage cartPage;
 
     @BeforeMethod
     public void setUpData() {
+
+       loginHelp = new LoginHelp();
         checkout = new CheckoutPage(driver);
+        checkoutOverviewPage= new CheckoutOverviewPage(driver);
+        product = new ProductsPage(driver);
+        cartPage = new CartPage(driver);
+
+
+
+
     }
 
     @Test
-    public void checkoutWithValidFirstNameAndLastNameAndPostalCode() {
+    public void checkoutWithValidFirstNameAndLastNameAndPostalCode() throws InterruptedException {
+        loginHelp.loginWithValidUserNameAndPassword();
+        Thread.sleep(10000);
+        product.clickOnAddToCartButton(1);
+        Thread.sleep(6000);
+        product.goToCartPage();
+        Thread.sleep(10000);
+        cartPage.clickOnCheckoutButton();
+        Thread.sleep(6000);
         checkout.fillFirstName("Randa");
         checkout.fillLastName("Safwat");
         checkout.fillPostalCode("346");
         checkout.clickOnContinueButton();
 
-        checkoutOverviewPage = checkout.goToCheckoutOverview();
-
-        String expectedText = "Checkout: Overview";
-
-        String actualText = checkoutOverviewPage.getCheckoutOverviewText();
-        Assert.assertEquals(actualText, expectedText);
+        String expectedTitle = "Checkout: Your Information";
+        String actualTitle = checkout.getCheckoutInformationTitle();
+        Assert.assertEquals(actualTitle, expectedTitle, "Not on Checkout Information page");
 
 
     }
-//    @Test
-//    public void verifyThatPostalCodeAcceptsOnlyNumbers(){
-//        checkout.fillFirstName("Randa");
-//        checkout.fillLastName("Safwat");
-//        checkout.fillPostalCode("asdf");
-//        checkout.clickOnContinueButton();
-//
-//        String expectedText = "Please enter numbers only in the postal code field";
-//        String actualText = checkoutOverviewPage.getCheckoutOverviewText();
-//        Assert.assertEquals(actualText, expectedText);
-//
-//    }
+
 
     @Test
-    public void verifyErrorMessageWhenFirstNameIsEmpty() {
+    public void verifyErrorMessageWhenFirstNameIsEmpty() throws InterruptedException {
         checkout.fillFirstName("");
         checkout.fillLastName("Safwat");
         checkout.fillPostalCode("12345");
@@ -57,7 +63,7 @@ public class CheckoutTest extends TestBase {
     }
 
     @Test
-    public void verifyErrorMessageWhenLastNameIsEmpty() {
+    public void verifyErrorMessageWhenLastNameIsEmpty() throws InterruptedException {
         checkout.fillFirstName("Randa");
         checkout.fillLastName("");
         checkout.fillPostalCode("12345");
@@ -69,7 +75,7 @@ public class CheckoutTest extends TestBase {
     }
 
     @Test
-    public void verifyErrorMessageWhenPostalCodeIsEmpty() {
+    public void verifyErrorMessageWhenPostalCodeIsEmpty() throws InterruptedException {
         checkout.fillFirstName("Randa");
         checkout.fillLastName("Safwat");
         checkout.fillPostalCode("");

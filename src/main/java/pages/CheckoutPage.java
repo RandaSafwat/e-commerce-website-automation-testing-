@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 public class CheckoutPage extends PageBase{
     public CheckoutPage(WebDriver driver){
         super(driver);
+
     }
 
     By checkoutText = By.cssSelector("[data-test='title']");
@@ -18,6 +19,8 @@ public class CheckoutPage extends PageBase{
     By lastNameErrorMessage = By.xpath("//h3[contains(text(),'Last Name is required')]");
     By postalCodeErrorMessage = By.xpath("//h3[contains(text(),'Postal Code is required')]");
     By cartButton = By.id("shopping_cart_container");
+    By checkoutInfoTitle = By.className("title");  // نفس الكلاس اللي بيظهر فيه عنوان الصفحة
+
 
     public String getFirstNameErrorMessage() {
         return getElementText(firstNameErrorMessage);
@@ -63,15 +66,12 @@ public class CheckoutPage extends PageBase{
         return getElementText(checkoutText);
     }
 
-    public CheckoutOverviewPage goToCheckoutOverview() {
-        clickOnElement(continueButton);
-        return new CheckoutOverviewPage(driver);
+    public String getCheckoutInformationTitle() {
+        return driver.findElement(checkoutInfoTitle).getText();
     }
 
-//    public CartPage goToCartPageFromCheckout() {
-//        clickOnElement(cancelButton);
-//        return new CartPage(driver);
-//    }
+
+
 
 
 
