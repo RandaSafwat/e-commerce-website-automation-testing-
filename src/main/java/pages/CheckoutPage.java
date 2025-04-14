@@ -19,7 +19,7 @@ public class CheckoutPage extends PageBase{
     By lastNameErrorMessage = By.xpath("//h3[contains(text(),'Last Name is required')]");
     By postalCodeErrorMessage = By.xpath("//h3[contains(text(),'Postal Code is required')]");
     By cartButton = By.id("shopping_cart_container");
-    By checkoutInfoTitle = By.className("title");  // نفس الكلاس اللي بيظهر فيه عنوان الصفحة
+    By checkoutInfoTitle = By.className("title");  
 
 
     public String getFirstNameErrorMessage() {
@@ -68,6 +68,10 @@ public class CheckoutPage extends PageBase{
 
     public String getCheckoutInformationTitle() {
         return driver.findElement(checkoutInfoTitle).getText();
+    }
+
+    public CartPage goToCartPageFromCheckout() {
+        return new CartPage(driver);
     }
 
 

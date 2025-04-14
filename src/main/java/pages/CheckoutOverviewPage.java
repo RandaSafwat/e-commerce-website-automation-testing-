@@ -6,7 +6,8 @@ import org.openqa.selenium.WebDriver;
 public class CheckoutOverviewPage extends PageBase {
 
     By checkoutOverviewText = By.cssSelector("[data-test='title']");
-    By continueButton = By.id("finish");  //
+    By continueButton = By.id("finish");
+    By finishButton = By.id("finish");
 
     public CheckoutOverviewPage(WebDriver driver) {
         super(driver);
@@ -22,4 +23,9 @@ public class CheckoutOverviewPage extends PageBase {
     public void clickOnContinueButton() {
         clickOnElement(continueButton);
     }
+    public void clickOnFinishButton() {
+        clickOnElement(finishButton);
+    }
+
+
 }

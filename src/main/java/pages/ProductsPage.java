@@ -55,5 +55,19 @@ public class ProductsPage extends PageBase {
     public String productsTextActualResult(){
         return getElementText(productsText);
     }
+
+//    public void clickOnRemoveFromCartButton(int index) {
+//        List<WebElement> removeButtons = driver.findElements(By.xpath("//*[@class='btn btn_secondary btn_small cart_button']"));
+//
+//        // تحقق إذا كان الـ index ضمن حجم القائمة
+//        if (index >= 0 && index < removeButtons.size()) {
+//            removeButtons.get(index).click();
+//        } else {
+//            System.out.println("Index out of bounds: " + index);
+//        }
+//    }
+
+
+
 }
 

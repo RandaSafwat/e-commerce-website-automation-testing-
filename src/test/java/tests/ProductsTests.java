@@ -10,9 +10,6 @@ import pages.ProductsPage;
 
 public class ProductsTests extends TestBase {
 
-    public ProductsTests(WebDriver driver) {
-
-    }
     LoginPage loginPage;
     ProductsPage productsPage;
     CartPage cartPage;
@@ -31,6 +28,25 @@ public class ProductsTests extends TestBase {
     @Test
     public void testProductNamesVisibility() {
         Assert.assertTrue(productsPage.areProductNamesVisible(), "One or more product names are empty or invisible.");
+    }
+
+
+
+    @Test
+    public void testProductPricesVisibility() {
+        Assert.assertTrue(productsPage.areProductPricesVisible(), "One or more product prices are empty or invisible.");
+    }
+
+    @Test
+    public void testAddToCartButtonExists() {
+        Assert.assertTrue(productsPage.areAddToCartButtonsVisibleAndClickable(), "One or more 'Add to Cart' buttons are not visible or clickable.");
+    }
+    @Test
+    public void testNavigateToCartPageAfterAddingProduct() {
+        productsPage.clickOnAddToCartButton(0); // Add the first product to the cart
+        productsPage.goToCartPage(); // Navigate to the cart page
+
+        Assert.assertTrue(cartPage.areCartItemsVisible(), "No items found in the cart.");
     }
 }
 
