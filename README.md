@@ -4,7 +4,7 @@ This is an automation testing project for a sample e-commerce website.
 The purpose of this project is to validate the core functionalities of the website using automated test scripts, ensuring high quality and consistent behavior across different features.
 
 ## Project Objectives
-- Automate testing for critical features like login, registration, cart, and checkout.
+- Automate testing for critical features like login, home ,cart, and checkout.
 - Reduce manual testing efforts and increase efficiency.
 - Catch bugs early in the development cycle.
 - Provide reliable test reports.
